@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.1.0.js"></script>
-    <script src="http://cloud.github.com/downloads/kostructures/ko.Model/ko.model-0.1.2.js"></script>
+    <script src="http://cloud.github.com/downloads/kostructures/ko.Model/ko.model-0.1.3.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -85,7 +85,7 @@
   self.initialize(attrs);
 };</pre></code>
 
-        <p>The first example is 254 characters. The second is 197. It also is a bit more easy to read.</p>
+        <p>The first example is 254 characters. The second is 197. It also is a bit easier to read.</p>
 
         <p>Now what happens when you call new on these examples without an object?</p>
 
@@ -185,6 +185,34 @@ obj();
 ko.Model.set(obj, 'Hello World');
 obj();
 > "Hello World"</pre></code>
+
+        <p><code>.toJS()</code></p>
+
+        <p>Converts the ko.Model object into a plain JavaScript object.</p>
+
+<pre><code>var current_user = new User({
+  name: 'Dan Matthews',
+  email: 'dan@bluefoc.us',
+  id: 1,
+  phone_numbers: [
+    '(212) 555-5555',
+    '(917) 555-5555'
+  ]
+});
+
+current_user;
+> User
+
+current_user.toJS();
+> {
+    name: 'Dan Matthews',
+    email: 'dan@bluefoc.us',
+    id: 1,
+    phone_numbers: [
+      '(212) 555-5555',
+      '(917) 555-5555'
+    ]
+  }</code></pre>
 
       </section>
       <footer>
