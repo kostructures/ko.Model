@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.1.0.js"></script>
-    <script src="http://cloud.github.com/downloads/kostructures/ko.Model/ko.model-0.1.0.js"></script>
+    <script src="http://cloud.github.com/downloads/kostructures/ko.Model/ko.model-0.1.1.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -35,7 +35,7 @@
 
         <p>
           This object contains a series of functions to make building data models in <a href="http://knockoutjs.com">
-          KnockoutJS</a> a lighter process. It relies lightly on jQuery.
+          KnockoutJS</a> a lighter process. It relies on jQuery and KnockoutJS 2.
         </p>
 
         <h3>How do I create a ko.Model derived object?</h3>
@@ -105,11 +105,11 @@ new User;
           will only assign the attributes that match the ones declared in the ko.Model.attributes call.
         </p>
 
-        <h3>What else is in there</h3>
+        <h3>What else is in there?</h3>
 
         <p><code>.reset</code></p>
 
-        <p>This method resets all of the values to their defaults (whatever value was passed in the attributes method).</p>
+        <p>This function resets all of the values to their defaults (whatever value was passed in the attributes method).</p>
 
 <pre><code>var current_user = new User({
   name: 'Dan Matthews',
@@ -135,7 +135,36 @@ current_user.phone_numbers();
 current_user.name();
 > ''</pre></code>
 
+        <p><code>.restore</code></p>
 
+        <p>This function restores the model to it's original values (the ones passed to new)</p>
+
+<pre><code>var current_user = new User({
+  name: 'Dan Matthews',
+  email: 'dan@bluefoc.us',
+  id: 1,
+  phone_numbers: [
+    '(212) 555-5555',
+    '(917) 555-5555'
+  ]
+});
+
+current_user.phone_numbers.push('(201) 555-5555');
+current_user.phone_numbers();
+> ["(212) 555-5555", "(917) 555-5555", "(201) 555-5555"]
+
+current_user.name("Bob");
+current_user.name();
+> "Bob"
+
+current_user.restore();
+
+// Note: this is currently broken and does not reset arrays
+current_user.phone_numbers();
+> ["(212) 555-5555", "(917) 555-5555"]
+
+current_user.name();
+> "Dan Matthews"</pre></code>
 
 
       </section>
