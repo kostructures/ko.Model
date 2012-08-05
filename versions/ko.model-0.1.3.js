@@ -11,7 +11,7 @@
     __modelExtensions__: ko.observableArray([]),
     __defaults__: {},
     __attrs__: {},
-    __version__: '0.1.2',
+    __version__: '0.1.3',
 
     attributes: function(attrs) {
       var self = this;
@@ -76,7 +76,7 @@
     toJS: function() {
       var self = this;
       var attrs = {};
-      for(var attr in self._defaults) {
+      for(var attr in self.__defaults__) {
         attrs[attr] = self[attr]();
       }
       return attrs;
