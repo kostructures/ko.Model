@@ -18,7 +18,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Ko.model</h1>
+        <h1>ko.Model</h1>
         <p>The base Model object</p>
 
         <p class="view"><a href="https://github.com/kostructures/ko.Model">View the Project on GitHub <small>kostructures/ko.Model</small></a></p>
@@ -29,6 +29,18 @@
           <li><a href="https://github.com/kostructures/ko.Model/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/kostructures/ko.Model">View On <strong>GitHub</strong></a></li>
         </ul>
+
+        <br />
+        <p>Headings</p>
+        <div class="view"><a href="#how">How do I create a ko.Model derived object?</a></div>
+        <div class="view"><a href="#what">What do I get?</a></div>
+        <br />
+
+        <p>Functions</p>
+        <div class="view"><a href="#reset">.reset()</a></div>
+        <div class="view"><a href="#restore">.restore()</a></div>
+        <div class="view"><a href="#set">.set(target, value)</a></div>
+        <div class="view"><a href="#toJS">.toJS()</a></div>
       </header>
       <section>
         <h3>ko.Model</h3>
@@ -38,7 +50,7 @@
           KnockoutJS</a> a lighter process. It relies on jQuery and KnockoutJS 2.
         </p>
 
-        <h3>How do I create a ko.Model derived object?</h3>
+        <h3 id="how">How do I create a ko.Model derived object?</h3>
 
         <p>
           Feel free to try any of the code samples in your JavaScript console. jQuery, KnockoutJS and ko.Model are all
@@ -54,7 +66,7 @@
   self.initialize(attrs);
 };</code></pre>
 
-        <h3>What do I get?</h3>
+        <h3 id="what">What do I get?</h3>
 
         <p>For starters, ko.Model gives your object a simpler declaritive syntax. Lets continue with the idea of a user.</p>
 
@@ -107,7 +119,7 @@ new User;
 
         <h3>What else is in there?</h3>
 
-        <p><code>.reset()</code></p>
+        <p id="reset"><code>.reset()</code></p>
 
         <p>This function resets all of the values to their defaults (whatever value was passed in the attributes method).</p>
 
@@ -135,7 +147,7 @@ current_user.phone_numbers();
 current_user.name();
 > ''</pre></code>
 
-        <p><code>.restore()</code></p>
+        <p id="restore"><code>.restore()</code></p>
 
         <p>This function restores the model to it's original values (the ones passed to new)</p>
 
@@ -165,7 +177,7 @@ current_user.phone_numbers();
 current_user.name();
 > "Dan Matthews"</pre></code>
 
-        <p><code>.set(target, value)</code></p>
+        <p id="set"><code>.set(target, value)</code></p>
 
         <p>
           Sets the value of the target passed if the value passed is not undefined or null. Target should be
@@ -186,7 +198,7 @@ ko.Model.set(obj, 'Hello World');
 obj();
 > "Hello World"</pre></code>
 
-        <p><code>.toJS()</code></p>
+        <p id="toJS"><code>.toJS()</code></p>
 
         <p>Converts the ko.Model object into a plain JavaScript object.</p>
 
