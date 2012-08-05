@@ -107,7 +107,7 @@ new User;
 
         <h3>What else is in there?</h3>
 
-        <p><code>.reset</code></p>
+        <p><code>.reset()</code></p>
 
         <p>This function resets all of the values to their defaults (whatever value was passed in the attributes method).</p>
 
@@ -135,7 +135,7 @@ current_user.phone_numbers();
 current_user.name();
 > ''</pre></code>
 
-        <p><code>.restore</code></p>
+        <p><code>.restore()</code></p>
 
         <p>This function restores the model to it's original values (the ones passed to new)</p>
 
@@ -165,6 +165,26 @@ current_user.phone_numbers();
 current_user.name();
 > "Dan Matthews"</pre></code>
 
+        <p><code>.set(target, value)</code></p>
+
+        <p>
+          Sets the value of the target passed if the value passed is not undefined or null. Target should be
+          an observable or other function which takes a value to set as it's first argument. This is used by
+          initialize to make sure that null values don't override the defaults specified in .attributes.
+        </p>
+
+<pre><code>var obj = ko.observable('');
+
+obj();
+> ""
+
+ko.Model.set(obj, null);
+obj();
+> ""
+
+ko.Model.set(obj, 'Hello World');
+obj();
+> "Hello World"</pre></code>
 
       </section>
       <footer>
