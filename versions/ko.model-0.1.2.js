@@ -11,7 +11,7 @@
     __modelExtensions__: ko.observableArray([]),
     __defaults__: {},
     __attrs__: {},
-    __version__: '0.1.1',
+    __version__: '0.1.2',
 
     attributes: function(attrs) {
       var self = this;
@@ -21,7 +21,8 @@
       self.__defaults__ = attrs;
 
       for(var attr in attrs){
-        var name = attr.constructor.name;
+        var name = attrs[attr] || attrs[attrs] === false ? attrs[attr].constructor.name : 'null';
+
         if(name === "Array") {
           self[attr] = ko.observableArray(attrs[attr]);
         } else if(name === "Function") {
@@ -36,7 +37,7 @@
     initialize: function(attrs) {
       var self = this;
 
-      self.__attrs__ = attrs;
+      self.__attrs__ = $.extend(true, {}, attrs);;
 
       for(var attr in attrs) {
         if(/_attributes$/.test(attr)) {
@@ -59,8 +60,10 @@
 
     // Restores to the newed state
     restore: function() {
-      this.reset();
-      this.initialize(this.__attrs__);
+      var self = this;
+
+      self.reset();
+      self.initialize(self.__attrs__);
     },
 
     // will never set null or undefined
