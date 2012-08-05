@@ -11,7 +11,7 @@
     __modelExtensions__: ko.observableArray([]),
     __defaults__: {},
     __attrs__: {},
-    __version__: '0.1.0',
+    __version__: '0.1.1',
 
     attributes: function(attrs) {
       var self = this;
