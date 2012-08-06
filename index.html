@@ -78,7 +78,7 @@
   self.email = ko.observable(attrs.email||'');
   self.id = ko.observable(attrs.id||null);
   self.name = ko.observable(attrs.name||'');
-  self.phone_numbers = ko.observableArray(attrs.phone_numbers||[]);
+  self.phoneNumbers = ko.observableArray(attrs.phoneNumbers||[]);
 };</pre></code>
 
         <p>And here it is with ko.Model:</p>
@@ -91,7 +91,7 @@
     email: '',
     id: null,
     name: '',
-    phone_numbers: []
+    phoneNumbers: []
   });
 
   self.initialize(attrs);
@@ -103,12 +103,12 @@
 
         <p>The first:</p>
 
-<pre><code>var current_user = new User;
+<pre><code>var currentUser = new User;
 <span style="color: red">TypeError: Cannot read property 'email' of undefined</span></pre></code>
 
         <p>The second:</p>
 
-<pre><code>var current_user = new User;
+<pre><code>var currentUser = new User;
 new User;
 > User</pre></code>
 
@@ -123,58 +123,58 @@ new User;
 
         <p>This function resets all of the values to their defaults (whatever value was passed in the attributes method).</p>
 
-<pre><code>var current_user = new User({
+<pre><code>var currentUser = new User({
   name: 'Dan Matthews',
   email: 'dan@bluefoc.us',
   id: 1,
-  phone_numbers: [
+  phoneNumbers: [
     '(212) 555-5555',
     '(917) 555-5555'
   ]
 });
 
-current_user.phone_numbers();
+currentUser.phoneNumbers();
 > ["(212) 555-5555", "(917) 555-5555"]
 
-current_user.name();
+currentUser.name();
 > "Dan Matthews"
 
-current_user.reset();
+currentUser.reset();
 
-current_user.phone_numbers();
+currentUser.phoneNumbers();
 > []
 
-current_user.name();
+currentUser.name();
 > ''</pre></code>
 
         <p id="restore"><code>.restore()</code></p>
 
         <p>This function restores the model to it's original values (the ones passed to new)</p>
 
-<pre><code>var current_user = new User({
+<pre><code>var currentUser = new User({
   name: 'Dan Matthews',
   email: 'dan@bluefoc.us',
   id: 1,
-  phone_numbers: [
+  phoneNumbers: [
     '(212) 555-5555',
     '(917) 555-5555'
   ]
 });
 
-current_user.phone_numbers.push('(201) 555-5555');
-current_user.phone_numbers();
+currentUser.phoneNumbers.push('(201) 555-5555');
+currentUser.phoneNumbers();
 > ["(212) 555-5555", "(917) 555-5555", "(201) 555-5555"]
 
-current_user.name("Bob");
-current_user.name();
+currentUser.name("Bob");
+currentUser.name();
 > "Bob"
 
-current_user.restore();
+currentUser.restore();
 
-current_user.phone_numbers();
+currentUser.phoneNumbers();
 > ["(212) 555-5555", "(917) 555-5555"]
 
-current_user.name();
+currentUser.name();
 > "Dan Matthews"</pre></code>
 
         <p id="set"><code>.set(target, value)</code></p>
@@ -202,25 +202,25 @@ obj();
 
         <p>Converts the ko.Model object into a plain JavaScript object.</p>
 
-<pre><code>var current_user = new User({
+<pre><code>var currentUser = new User({
   name: 'Dan Matthews',
   email: 'dan@bluefoc.us',
   id: 1,
-  phone_numbers: [
+  phoneNumbers: [
     '(212) 555-5555',
     '(917) 555-5555'
   ]
 });
 
-current_user;
+currentUser;
 > User
 
-current_user.toJS();
+currentUser.toJS();
 > {
     name: 'Dan Matthews',
     email: 'dan@bluefoc.us',
     id: 1,
-    phone_numbers: [
+    phoneNumbers: [
       '(212) 555-5555',
       '(917) 555-5555'
     ]
